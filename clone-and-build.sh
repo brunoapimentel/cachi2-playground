@@ -45,6 +45,8 @@ podman run --rm \
         "$CACHI2_IMAGE" \
         inject-files /tmp/output
 
+# use the cachi2 env variables in all RUN instructions in the Containerfile
+sed -i 's|^\s*run |RUN . /tmp/cachi2.env \&\& \\\n    |i' "./sources/$CONTAINERFILE_PATH"
 
 # build hermetically
 podman build -t "$OUTPUT_IMAGE" \
