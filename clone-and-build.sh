@@ -45,10 +45,6 @@ podman run --rm \
         "$CACHI2_IMAGE" \
         inject-files /tmp/output
 
-# copy containerfile
-if [ -n "$DOCKERFILE" ]; then
-  cp "$SCRIPT_DIR/$DOCKERFILE" ./sources/Dockerfile
-fi;
 
 # build hermetically
 podman build -t "$OUTPUT_IMAGE" \
@@ -56,5 +52,6 @@ podman build -t "$OUTPUT_IMAGE" \
 	-v $(realpath ./cachi2.env):/tmp/cachi2.env \
 	--no-cache \
 	--network=none \
+	-f "./sources/$CONTAINERFILE_PATH" \
 	sources
 
