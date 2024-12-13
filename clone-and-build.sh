@@ -12,6 +12,7 @@ git clone "$GIT_REPO" sources
 
 cd sources
 git checkout "$REF"
+git submodule update --init --recursive
 cd ..
 
 mkdir output
