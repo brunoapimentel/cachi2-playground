@@ -1,5 +1,6 @@
 #!/bin/bash
-source input.env
+
+source ${1:-input.env}
 
 SCRIPT_DIR=$(pwd)
 TMP_DIR=$(mktemp -d "/tmp/cachi2.play.XXXXXXXXXX")
