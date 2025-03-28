@@ -9,7 +9,7 @@ set -ex
 
 # clone source code
 cd $TMP_DIR
-git clone "$GIT_REPO" sources
+git clone "$GIT_REPO" sources --recurse-submodules
 
 cd sources
 git checkout "$REF"
