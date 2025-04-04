@@ -55,10 +55,21 @@ if [ -d "./output/deps/rpm/x86_64/repos.d" ]; then
 	MOUNT_RPM_REPOS="-v $(realpath ./output/deps/rpm/x86_64/repos.d):/etc/yum.repos.d"
 fi
 
+# create the cargo config file
+mkdir sources/.cargo
+
+echo "
+[source.crates-io]
+replace-with = 'local'
+[source.local]
+directory = '/tmp/output/deps/cargo'
+" > cargo-config.toml
+
 # build hermetically
 podman build -t "$OUTPUT_IMAGE" \
 	-v $(realpath ./output):/tmp/output:Z \
 	-v $(realpath ./cachi2.env):/tmp/cachi2.env \
+	-v $(realpath ./cargo-config.toml):/tmp/.cargo/config.toml:Z \
 	$MOUNT_RPM_REPOS \
 	--no-cache \
 	--network=none \
