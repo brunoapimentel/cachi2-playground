@@ -4,7 +4,7 @@ source ${1:-input.env}
 
 SCRIPT_DIR=$(pwd)
 TMP_DIR=$(mktemp -d "/tmp/cachi2.play.XXXXXXXXXX")
-OUTPUT_MOUNT_DIR=/tmp/output
+OUTPUT_MOUNT_DIR=/cachi2/output
 SOURCE_MOUNT_DIR=/tmp/sources
 
 set -ex
