@@ -13,6 +13,7 @@ git clone "$GIT_REPO" sources
 
 cd sources
 git checkout "$REF"
+git submodule update --init thanos
 cd ..
 
 mkdir output
