@@ -1,6 +1,6 @@
-# Cachi2 playground
+# Hermeto playground
 
-A simple shell script to perform a hermetic build using Cachi2 to prefetch the dependencies.
+A simple shell script to perform a hermetic build using [Hermeto](https://github.com/hermetoproject/hermeto) to prefetch the dependencies.
 
 The script takes a git repo as the input param, and will clone, prefetch, inject project files,
 and build it using buildah while cutting all network access.
